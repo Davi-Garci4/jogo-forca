@@ -1,4 +1,4 @@
-# plataforma de jogos
+# Plataforma de jogos
 
 Repositório dedicado a projetos em python. 
 
