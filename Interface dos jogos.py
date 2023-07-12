@@ -14,7 +14,7 @@ def inicial():
         print("Jogando Forca....")
         cod_forca.jogar()
     elif (jogo == 2):
-        print("Jogando Adivinhação...")
+        print("Jogando Adivinhação....")
         adivinhação.jogar()
 
 if (__name__ == "__main__"):
