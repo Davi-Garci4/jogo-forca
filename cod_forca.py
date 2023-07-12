@@ -1,22 +1,12 @@
 import random
 
+
+
 def jogar():
-    print("*********************************")
-    print("***Bem vindo ao jogo da Forca!***")
-    print("*********************************")
 
-    arquivo = open("palavras.jogo", "r") # Aqui eu estou chamando o arquivo criado, no modo de leitura "r"
-    palavras = []
-    for linha in arquivo:
-        linha = linha.strip() #Essa função serve para tirar o "\n" das palavras do arquivo
-        palavras.append(linha) # Aqui eu estou pegando cada linha do arquivo que contém uma palavra e jogando a palavra dentro da lista de palavras
-
-    arquivo.close()
-
-    numero = random.randrange(0,len(palavras)) #Esse metodo vai escolher um numero aleatório dentro dos parâmetros estabelecidos
-    palavra_secreta = palavras[numero].upper() #Aqui vai ser escolhida uma palavra_secreta, dentro da lista de palavras, pelo index aleatório gerado pela função acima e sera deixada todas as letras em maiúsculo
-
-    letras_acertadas = ["_" for letra in palavra_secreta] # Aqui eu estou colocando a quantidade de infens coerente com a quantidade de letras da palavra secreta
+    imprime_mensagem_abertura()
+    palavra_secreta = carrega_palavra_secreta()
+    letras_acertadas = inicializa_letras_acertadas(palavra_secreta)
 
     enforcou = False
     acertou = False
@@ -50,3 +40,24 @@ def jogar():
 
 if (__name__ == "__main__"):  #Aqui eu estou criando um arquivo próprio pro jogo e também ligando ele a interface inicial
         jogar()
+
+def imprime_mensagem_abertura():
+    print("*********************************")
+    print("***Bem vindo ao jogo da Forca!***")
+    print("*********************************")
+
+def carrega_palavra_secreta():
+    arquivo = open("palavras.jogo", "r")  # Aqui eu estou chamando o arquivo criado, no modo de leitura "r"
+    palavras = []
+    for linha in arquivo:
+        linha = linha.strip()  # Essa função serve para tirar o "\n" das palavras do arquivo
+        palavras.append(linha)  # Aqui eu estou pegando cada linha do arquivo que contém uma palavra e jogando a palavra dentro da lista de palavras
+
+    arquivo.close()
+
+    numero = random.randrange(0, len(palavras))  # Esse metodo vai escolher um numero aleatório dentro dos parâmetros estabelecidos
+    palavra_secreta = palavras[numero].upper()  # Aqui vai ser escolhida uma palavra_secreta, dentro da lista de palavras, pelo index aleatório gerado pela função acima e sera deixada todas as letras em maiúsculo
+    return palavra_secreta
+
+def inicializa_letras_acertadas(palavra):
+    return ["_" for letra in palavra]  # Aqui eu estou colocando a quantidade de infens coerente com a quantidade de letras da palavra secreta
