@@ -9,11 +9,13 @@ def jogar():
     palavras = []
     for linha in arquivo:
         linha = linha.strip() #Essa função serve para tirar o "\n" das palavras do arquivo
-        palavras.append(linha) # Aqui eu estou pegando cada linha do arquivo que contém uma palavra e jogando dentro da lista de palavras
+        palavras.append(linha) # Aqui eu estou pegando cada linha do arquivo que contém uma palavra e jogando a palavra dentro da lista de palavras
 
     arquivo.close()
 
-    palavra_secreta = "banana".upper()
+    numero = random.randrange(0,len(palavras)) #Esse metodo vai escolher um numero aleatório dentro dos parâmetros estabelecidos
+    palavra_secreta = palavras[numero].upper() #Aqui vai ser escolhida uma palavra_secreta, dentro da lista de palavras, pelo index aleatório gerado pela função acima e sera deixada todas as letras em maiúsculo
+
     letras_acertadas = ["_" for letra in palavra_secreta] # Aqui eu estou colocando a quantidade de infens coerente com a quantidade de letras da palavra secreta
 
     enforcou = False
@@ -40,6 +42,7 @@ def jogar():
 
     if (acertou):
         print("Você ganhou!!")
+        print("A palavra correta é {}!".format(palavra_secreta))
     else:
         print("Você perdeu!!")
 
