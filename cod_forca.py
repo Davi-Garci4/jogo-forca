@@ -1,33 +1,39 @@
-print("*********************************")
-print("***Bem vindo ao jogo da Forca!***")
-print("*********************************")
+import random
 
-palavra_secreta = "banana".upper()
-letras_acertadas = ["_", "_", "_", "_", "_", "_",]
+def jogar():
+    print("*********************************")
+    print("***Bem vindo ao jogo da Forca!***")
+    print("*********************************")
 
-enforcou = False
-acertou = False
-erros = 0
+    palavra_secreta = "banana".upper()
+    letras_acertadas = ["_", "_", "_", "_", "_", "_",]
 
-while (not acertou and not enforcou):
+    enforcou = False
+    acertou = False
+    erros = 0
 
-    chute = input("Qual é a letra:")
-    chute = chute.strip().upper()
-    if (chute in palavra_secreta):
-        index = 0
-        for letra in palavra_secreta:
-            if (letra == chute):
-               letras_acertadas[index] = letra
-            index += 1
+    while (not acertou and not enforcou):
+
+        chute = input("Qual é a letra:")
+        chute = chute.strip().upper()
+        if (chute in palavra_secreta):
+            index = 0
+            for letra in palavra_secreta:
+                if (letra == chute):
+                   letras_acertadas[index] = letra
+                index += 1
+        else:
+            erros += 1
+        enforcou = erros == 6
+        acerto = "_" not in letras_acertadas
+        print(letras_acertadas)
+
+    if (acertou):
+        print("Você ganhou!!")
     else:
-        erros += 1
-    enforcou = erros == 6
-    acerto = "_" not in letras_acertadas
-    print(letras_acertadas)
+        print("Você perdeu!!")
 
-if (acertou):
-    print("Você ganhou!!")
-else:
-    print("Você perdeu!!")
+    print("Fim de jogo...")
 
-print("Fim de jogo...")
+    if (__name__ == "__main__"):
+        jogar()
