@@ -5,8 +5,16 @@ def jogar():
     print("***Bem vindo ao jogo da Forca!***")
     print("*********************************")
 
+    arquivo = open("palavras.jogo", "r") # Aqui eu estou chamando o arquivo criado, no modo de leitura "r"
+    palavras = []
+    for linha in arquivo:
+        linha = linha.strip() #Essa função serve para tirar o "\n" das palavras do arquivo
+        palavras.append(linha) # Aqui eu estou pegando cada linha do arquivo que contém uma palavra e jogando dentro da lista de palavras
+
+    arquivo.close()
+
     palavra_secreta = "banana".upper()
-    letras_acertadas = ["_" for letra in palavra_secreta]
+    letras_acertadas = ["_" for letra in palavra_secreta] # Aqui eu estou colocando a quantidade de infens coerente com a quantidade de letras da palavra secreta
 
     enforcou = False
     acertou = False
@@ -37,5 +45,5 @@ def jogar():
 
     print("Fim de jogo...")
 
-if (__name__ == "__main__"):
+if (__name__ == "__main__"):  #Aqui eu estou criando um arquivo próprio pro jogo e também ligando ele a interface inicial
         jogar()
