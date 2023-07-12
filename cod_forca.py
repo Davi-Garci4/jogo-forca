@@ -12,6 +12,8 @@ def jogar():
     acertou = False
     erros = 0
 
+    print(letras_acertadas)
+
     while (not acertou and not enforcou):
 
         chute = input("Qual é a letra:")
@@ -25,7 +27,7 @@ def jogar():
         else:
             erros += 1
         enforcou = erros == 6
-        acerto = "_" not in letras_acertadas
+        acertou = "_" not in letras_acertadas
         print(letras_acertadas)
 
     if (acertou):
